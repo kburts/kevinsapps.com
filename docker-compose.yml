@@ -1,0 +1,71 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.5.1
+    networks:
+      - back-tier
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  flask:
+    build:
+      context: ./flask
+    volumes:
+      - ./flask:/code
+    networks:
+      - back-tier
+    command:
+      python -m flask run --host=0.0.0.0
+    ports:
+      - "5000:5000"
+
+  music:
+    build:
+      context: ./music
+    volumes:
+      - ./music:/code
+      - /public
+    networks:
+      - back-tier
+    command: python manage.py runserver 0.0.0.0:8010
+    ports:
+      - "8010:8010"
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /www/static
+    volumes_from:
+      - music
+    networks:
+      - back-tier
+
+#  webserver:
+#    build:
+#      context: ./caddy
+#    depends_on:
+#      - music
+#      - flask
+#    ports:
+#      - "80:2015"
+#      - "2016:2016"
+#    networks:
+#      - back-tier
+#    command: -conf=Caddyfile
+
+
+
+
+
+
+volumes:
+  pg-data:
+    driver: local
+
+networks:
+  back-tier:
+    driver: bridge

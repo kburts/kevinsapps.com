@@ -1,0 +1,9 @@
+0.0.0.0 {
+    proxy / music:8010 {
+        header_upstream -Content-Length
+        header_upstream -Content_Length
+        header_upstream -Host
+        header_upstream -Connection
+        header_upstream -Accept-Encoding
+    }
+}
