@@ -29,7 +29,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = public_root('static')
 STATIC_URL = '/static/'
 
-ALLOWED_HOSTS = ['192.168.99.100', 'music']
+ALLOWED_HOSTS = ['192.168.99.100', 'music', 'kevinsapps.com', 'music.kevinsapps.com']
 
 INTERNAL_IPS = ['192.168.99.1']
 
