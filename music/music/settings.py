@@ -24,9 +24,12 @@ DEBUG = env('DEBUG') # False if not in os.environ
 
 SECRET_KEY = env('SECRET_KEY')
 
-MEDIA_ROOT = public_root('media')
+STATIC_ROOT = '/public/static/'
+MEDIA_ROOT = '/public/media/'
+
+#MEDIA_ROOT = public_root('media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = public_root('static')
+#STATIC_ROOT = public_root('static')
 STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = ['192.168.99.100', 'music', 'kevinsapps.com', 'music.kevinsapps.com']

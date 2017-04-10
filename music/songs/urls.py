@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import log_in, log_out, sign_up, user_list, scrobble, ok_200, now_playing
+from .views import log_in, log_out, sign_up, user_list, scrobble, ok_200, now_playing, home
 
 urlpatterns = [
     url(r'^log_in/$', log_in, name='log_in'),
@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^scrobble/$', scrobble, name='scrobble'),
     url(r'^scrobble/np$', now_playing, name='scrobble_now_playing'),
     url(r'^scrobble/submit', ok_200, name='scrobble_submit_track'),
-    url(r'^$', user_list, name='user_list'),
+    url(r'^$', home, name='user_list'),
 ]

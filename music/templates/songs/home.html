@@ -1,13 +1,23 @@
 {% extends 'songs/base.html' %}
 
 {% block content %}
-  <ul>
-    {% for track in plays %}
-      <li data-title="{{ track.title }}">
-        {{ track.author }}: {{ track.title }}
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="col-sm-8">
+    <h1>Recent plays</h1>
+    <div class="table-box">
+      <table class="table table-striped table-hover">
+        {% for track in plays %}
+          <tr data-title="{{ track.title }}">
+            <td>
+              {{ track.song.artist }}
+            </td>
+            <td>
+              {{ track.song.title }}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 {% endblock content %}
 
 {% block script %}
@@ -48,12 +58,17 @@
 
     music_socket.onmessage = function message(event) {
       var data = JSON.parse(event.data);
-      var title = data.get('title')
-      $('ul').prepend();
+      console.log(data);
+      var title = data.title;
+      var artist = data.artist;
+      $('table').prepend('<tr data-title="' + title + '"><td> ' + artist + '</td><td>' + title + '</td></tr>');
       console.log(data);
     };
 
     if (socket.readyState == WebSocket.OPEN) socket.onopen();
   </script>
 
-{% endblock script %}t %}
+{% endblock script %}
+
+
+

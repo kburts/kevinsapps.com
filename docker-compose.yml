@@ -37,6 +37,7 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - /www/static
     volumes_from:
@@ -44,9 +45,8 @@ services:
     networks:
       - back-tier
 
-#  webserver:
-#    build:
-#      context: ./caddy
+#  caddy:
+#    image: abiosoft/caddy
 #    depends_on:
 #      - music
 #      - flask
@@ -56,11 +56,6 @@ services:
 #    networks:
 #      - back-tier
 #    command: -conf=Caddyfile
-
-
-
-
-
 
 volumes:
   pg-data:

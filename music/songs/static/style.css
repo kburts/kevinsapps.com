@@ -1,0 +1,8 @@
+.content {
+    text-align: center;
+}
+
+.table-box {
+    height: 400px;
+    overflow: auto;
+}

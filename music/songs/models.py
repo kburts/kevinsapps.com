@@ -26,7 +26,7 @@ class Song(models.Model):
             'title': self.title,
             'artist': self.artist,
             'album': self.album,
-            'year': self.year,
+            #'year': self.year,
         }
 
 

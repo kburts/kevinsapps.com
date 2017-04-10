@@ -33,7 +33,7 @@ class LogConsumer(JsonWebsocketConsumer):
         super().__init__(*args, **kwargs)
 
     def connection_groups(self, **kwargs):
-        return ['all']
+        return ['all', 'music']
 
     def connect(self, message, **kwargs):
         self.group_send('all', 'hello {}'.format(message.user))
@@ -48,7 +48,7 @@ class LogConsumer(JsonWebsocketConsumer):
 class MusicConsumer(JsonWebsocketConsumer):
 
     def connection_groups(self, **kwargs):
-        return ['music', 'all']
+        return ['music']
 
     def connect(self, message, **kwargs):
         self.message.reply_channel.send({"accept": True})

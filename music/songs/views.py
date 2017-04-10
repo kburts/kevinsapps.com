@@ -26,11 +26,11 @@ def user_list(request):
     return render(request, 'songs/user_list.html', {'users': users})
 
 
-def index_view(request):
+def home(request):
     """
     Homepage view. Listens for new plays
     """
-    plays = Play.objects.order_by('-created')
+    plays = Play.objects.order_by('-created')[:10]
     return render(request, 'songs/home.html', {'plays': plays})
 
 
