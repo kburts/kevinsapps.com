@@ -6,6 +6,6 @@ WORKDIR /code
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 
-RUN python manage.py collectstatic --no-input
+CMD python manage.py collectstatic --no-input
 
 CMD sleep infinity
