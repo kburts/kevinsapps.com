@@ -1,12 +1,18 @@
 version: '2'
 
 services:
-  db:
-    image: postgres:9.5.1
+  # My apps
+  music:
+    build:
+      context: ./music
+    volumes:
+      - ./music:/code
+      - /public
     networks:
       - back-tier
-    volumes:
-      - pg-data:/var/lib/postgresql/data
+    command: python manage.py runserver 0.0.0.0:8010
+    ports:
+      - "8010:8010"
 
   flask:
     build:
@@ -20,18 +26,28 @@ services:
     ports:
       - "5000:5000"
 
-  music:
-    build:
-      context: ./music
+  # 3rd party apps
+  nextcloud:
+    image: wonderfall/nextcloud
     volumes:
-      - ./music:/code
-      - /public
-    networks:
-      - back-tier
-    command: python manage.py runserver 0.0.0.0:8010
+      - /mnt/nextcloud/data:/data
+      - /mnt/nextcloud/config:/config
+      - /mnt/nextcloud/apps:/apps2
+      - /mnt/nextcloud/themes:/nextcloud/themes
     ports:
-      - "8010:8010"
+      - "8888:8888"
+    networks:
+     - back-tier
 
+  ghost:
+    restart: always
+    image: ghost:alpine
+    ports:
+      - "2368:2368"
+    volumes:
+      - ./ghost:/var/lib/ghost
+
+  # Services
   nginx:
     build:
       context: ./nginx
@@ -45,14 +61,21 @@ services:
     networks:
       - back-tier
 
+  db:
+    image: postgres:9.5-alpine
+    networks:
+      - back-tier
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
 #  caddy:
 #    image: abiosoft/caddy
 #    depends_on:
 #      - music
 #      - flask
 #    ports:
-#      - "80:2015"
-#      - "2016:2016"
+#      - "80:80"
+#      - "443:443"
 #    networks:
 #      - back-tier
 #    command: -conf=Caddyfile

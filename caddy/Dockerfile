@@ -1,2 +1,3 @@
-FROM jumanjiman/caddy
+FROM zzrot/alpine-caddy
+
 ADD Caddyfile ~/

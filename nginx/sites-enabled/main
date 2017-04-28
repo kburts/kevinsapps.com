@@ -62,3 +62,21 @@ server {
         proxy_pass http://flask:5000;
     }
 }
+
+server {
+    listen 80;
+    server_name files.kevinsapps.com;
+
+    location / {
+        proxy_pass http://nextcloud:8888;
+    }
+}
+
+server {
+    listen 80;
+    server_name blog.kevinsapps.com;
+
+    location / {
+        proxy_pass http://ghost:2368;
+    }
+}
