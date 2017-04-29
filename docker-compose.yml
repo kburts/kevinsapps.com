@@ -40,12 +40,13 @@ services:
      - back-tier
 
   ghost:
-    restart: always
     image: ghost:alpine
     ports:
       - "2368:2368"
     volumes:
       - ./ghost:/var/lib/ghost
+    networks:
+     - back-tier
 
   # Services
   nginx:
