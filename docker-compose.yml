@@ -34,6 +34,8 @@ services:
       - /mnt/nextcloud/config:/config
       - /mnt/nextcloud/apps:/apps2
       - /mnt/nextcloud/themes:/nextcloud/themes
+    environment:
+     - MEMORY_LIMIT: '256M'
     ports:
       - "8888:8888"
     networks:
@@ -45,6 +47,8 @@ services:
       - "2368:2368"
     volumes:
       - ./ghost:/var/lib/ghost
+    env_file:
+     - ghost/.env
     networks:
      - back-tier
 

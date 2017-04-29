@@ -12,7 +12,10 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: 'http://blog.kevinsapps.com',
-        mail: {},
+        mail: {
+            user: process.env.GHOST_MAILGUN_USERNAME,
+            pass: process.env.GHOST_MAILGUN_PASS
+        },
         database: {
             client: 'sqlite3',
             connection: {
@@ -24,6 +27,10 @@ config = {
         server: {
             host: '0.0.0.0',
             port: '2368'
+        },
+
+        paths: {
+            contentPath: path.join(process.env.GHOST_CONTENT, '/')
         }
     },
 
