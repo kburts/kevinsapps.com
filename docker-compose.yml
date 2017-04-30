@@ -34,8 +34,8 @@ services:
       - /mnt/nextcloud/config:/config
       - /mnt/nextcloud/apps:/apps2
       - /mnt/nextcloud/themes:/nextcloud/themes
-    environment:
-     - MEMORY_LIMIT: '256M'
+    env_file:
+     - nextcloud/.env
     ports:
       - "8888:8888"
     networks:
