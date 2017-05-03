@@ -1,0 +1,9 @@
+{% extends 'huts/base.html' %}
+
+{% block content %}
+    <h2>Thanks for using the booking system</h2>
+    <p>You should maybe get an email with a link to manage your booking and pay, unless Kevin doesn't have it set up right now.
+    You can also just use the link below to manage it, but don't lose the link!</p>
+
+    <a href="{{ manage_url }}">{{ manage_url }}</a>
+{% endblock %}

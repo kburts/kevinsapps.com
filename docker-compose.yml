@@ -14,6 +14,17 @@ services:
     ports:
       - "8010:8010"
 
+  vochuts:
+    build:
+      context: ./vochuts/vochuts
+    volumes:
+     - ./vochuts/vochuts:/voccode
+    networks:
+     - back-tier
+    command: python manage.py runserver 0.0.0.0:8020
+    ports:
+     - "8020:8020"
+
   flask:
     build:
       context: ./flask

@@ -1,0 +1,26 @@
+{% extends 'huts/base.html' %}
+
+{% block content %}
+    <h2>{{ hut }} Bookings</h2>
+
+    <h3>Current future bookings:</h3>
+    <ul>
+        {% for booking in bookings %}
+        <li style="margin-top: 5px;">
+            {{ booking.date_start }} - {{ booking.date_end }} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{ booking.guest.name }}. {{ booking.num_guests }} guest(s). VOC Trip: {{ booking.voc_trip }}. Paid: {{ booking.paid }}.
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Book a stay:</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4>Guest info:</h4>
+        {{ guest_form.as_p }}
+        <h4>Booking info:</h4>
+        {{ booking_form.as_p }}
+        <input class="btn" type="submit" value="Submit">
+    </form>
+
+{% endblock %}

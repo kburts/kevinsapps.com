@@ -1,0 +1,10 @@
+{% extends 'huts/base.html' %}
+
+{% block content %}
+    <h1>Index</h1>
+    <ul>
+        {% for hut in huts %}
+        <li><a href="{{ hut.get_absolute_url }}">{{ hut.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

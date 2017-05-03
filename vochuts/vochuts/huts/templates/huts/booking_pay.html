@@ -1,0 +1,54 @@
+{% extends 'huts/base.html' %}
+
+{% block content %}
+    <h2>{{ booking.hut.name }}: {{ booking.date_start }} - {{ booking.date_end }}</h2>
+
+    <p>
+        Cost/Donation information:<br>
+        {{ booking.num_guests }} guests * {{ booking.duration }} nights * ${{ booking.hut.price }}/night = <b>${{ booking.total_cost }}</b>
+    </p>
+
+    <p>Current booking payment status: <b>{{ booking.booking_status }}</b></p>
+
+    <br>
+
+    <p>Delete booking <i>Not implemented</i></p>
+
+    <p>Modify dates <i>Not implemented</i></p>
+
+    {% if not booking.paid and not booking.voc_trip%}
+        <h4>Please pay after your stay!</h4>
+        <h4>For CC, use any name, 4242 4242 4242 4242 - CVC 424, any expiry</h4><br>
+        <form method="post" enctype="multipart/form-data" class="form-horizontal" id="payment-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name.errors }}
+                {{ form.name.label_tag }}
+                {{ form.name }}
+
+                {{ form.number.errors }}
+                {{ form.number.label_tag }}
+                {{ form.number }}
+
+                {{ form.cvc.errors }}
+                {{ form.cvc.label_tag }}
+                {{ form.cvc }}
+            </div>
+            <div class="form-group">
+                {{ form.exp_month.errors }}
+                {{ form.exp_month.label_tag }}
+                {{ form.exp_month }}
+
+                {{ form.exp_year.errors }}
+                {{ form.exp_year.label_tag }}
+                {{ form.exp_year }}
+            </div>
+            <br>
+            <input class="btn" type="submit" value="Submit/Pay" id="form_submit" />
+        </form>
+    {% else %}
+        <p>You already paid! Thanks</p>
+    {% endif %}
+
+{% endblock %}
+
