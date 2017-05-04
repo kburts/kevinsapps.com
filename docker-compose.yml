@@ -10,7 +10,7 @@ services:
       - /public
     networks:
       - back-tier
-    command: bash -C "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8010"
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8010"
     ports:
       - "8010:8010"
 
@@ -22,7 +22,7 @@ services:
      - /public
     networks:
      - back-tier
-    command: bash -C "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8010"
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8010"
     ports:
      - "8020:8020"
 
