@@ -71,7 +71,7 @@ class Booking(models.Model):
         super(Booking, self).save(*args, **kwargs)
 
     def send_booking_email(self):
-        manage_url = '{}{}'.format(settings.URL_BASE, reverse('thanks', args=[str(self.uuid_key)]))
+        manage_url = '{}{}'.format(settings.URL_BASE, reverse('pay', args=[str(self.uuid_key)]))
         body = """
         Thanks for letting us know you want to stay in one of the huts!
         This is the info we have for your booking:
