@@ -73,9 +73,9 @@ services:
       - "443:443"
     volumes:
       - /www/static
-      - /public
     volumes_from:
       - music
+      - vochuts
     networks:
       - back-tier
 
