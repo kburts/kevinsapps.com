@@ -24,7 +24,7 @@ class Hut(models.Model):
 
 class Guest(models.Model):
     name = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
 
     def __str__(self):
         return self.name
