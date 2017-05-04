@@ -126,6 +126,7 @@ USE_TZ = True
 URL_BASE = env('URL_BASE')
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/public/static'
 
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
