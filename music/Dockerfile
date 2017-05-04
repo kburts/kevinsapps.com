@@ -7,5 +7,6 @@ ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 
 CMD python manage.py collectstatic --no-input
+CMD python manage.py runserver 0.0.0.0:8010
 
 CMD sleep infinity
