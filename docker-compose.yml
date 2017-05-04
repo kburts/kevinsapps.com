@@ -19,6 +19,7 @@ services:
       context: ./vochuts/vochuts
     volumes:
      - ./vochuts/vochuts:/voccode
+     - /public
     networks:
      - back-tier
     command: python manage.py runserver 0.0.0.0:8020
@@ -72,6 +73,7 @@ services:
       - "443:443"
     volumes:
       - /www/static
+      - /public
     volumes_from:
       - music
     networks:
