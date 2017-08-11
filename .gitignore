@@ -3,3 +3,7 @@
 .idea/
 *.pyc
 .env
+*.sqlite3
+
+# Ignore apps and keep them in their own repos
+analytics/

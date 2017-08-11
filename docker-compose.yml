@@ -26,6 +26,18 @@ services:
     ports:
      - "8020:8020"
 
+  analytics:
+    build:
+      context: ./analytics
+    volumes:
+     - ./analytics:/analyticscode
+     - /public
+    networks:
+     - back-tier
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8030"
+    ports:
+     - "8030:8030"
+
   flask:
     build:
       context: ./flask
@@ -64,6 +76,19 @@ services:
     networks:
      - back-tier
 
+  deluge:
+    image: Ufflo:docker-deluge
+    ports:
+      - "8112:8112"
+      - "58846:58846"
+      - "58847:58847"
+      - "58847:58847/udp"
+    volumes:
+      - /docker/deluge/config:/config
+      - /docker/deluge/log:/log
+      - /docker/deluge/data:/data
+    restart: always
+
   # Services
   nginx:
     build:
@@ -83,8 +108,15 @@ services:
     image: postgres:9.5-alpine
     networks:
       - back-tier
+    environment:
+      - DB_NAME=postgres,analytics
     volumes:
       - pg-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:3.2-alpine
+    networks:
+      - back-tier
 
 #  caddy:
 #    image: abiosoft/caddy
