@@ -26,7 +26,9 @@ vochuts.kevinsapps.com {
 }
 
 analytics.kevinsapps.com {
+    root /public
     proxy / analytics:8030 {
+        except /static
         header_upstream Host {host}
         header_upstream X-Real-IP {remote}
         header_upstream X-Forwarded-Proto {scheme}
