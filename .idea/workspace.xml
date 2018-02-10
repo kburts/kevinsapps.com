@@ -4,7 +4,6 @@
     <list default="true" id="af20a239-2856-4821-884d-7c8e4a005272" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/caddy/Caddyfile" afterPath="$PROJECT_DIR$/caddy/Caddyfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
     </list>
     <list id="781750e0-98c4-4d75-8305-9087bc42f70c" name=".idea never commit" comment="" />
     <ignored path="kevinsapps.com.iws" />
@@ -73,8 +72,8 @@
       <file leaf-file-name="Caddyfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caddy/Caddyfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="221">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -1069,7 +1068,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518303056211</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Get caddy to serve static files.">
+      <created>1518305531842</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1518305531842</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1116,7 +1122,8 @@
     <MESSAGE value="Update README" />
     <MESSAGE value="Remove old services from docker-compose.yml" />
     <MESSAGE value="update caddyfile to include all services." />
-    <option name="LAST_COMMIT_MESSAGE" value="update caddyfile to include all services." />
+    <MESSAGE value="Get caddy to serve static files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Get caddy to serve static files." />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -1502,8 +1509,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caddy/Caddyfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding />
         </state>
       </provider>

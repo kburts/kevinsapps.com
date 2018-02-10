@@ -2,7 +2,7 @@ kevinsapps.com, www.kevinsapps.com, flask.kevinsapps.com {
     proxy / flask:5000 { }
 }
 
-music.kevinsapps.com {
+http://music.kevinsapps.com, music.kevinsapps.com {
     root /public
     proxy / music:8010 {
         except /static
