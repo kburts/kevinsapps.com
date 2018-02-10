@@ -1,5 +1,21 @@
+kevinsapps.com flask.kevinsapps.com {
+    proxy / flask:5000 {}
+}
+
 music.kevinsapps.com {
     proxy / music:8010 {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-Proto {scheme}
+        websocket
+    }
+    log stdout
+    errors stdout
+    gzip
+}
+
+vochuts.kevinsapps.com {
+    proxy / vochuts:8020 {
         header_upstream Host {host}
         header_upstream X-Real-IP {remote}
         header_upstream X-Forwarded-Proto {scheme}
@@ -9,3 +25,25 @@ music.kevinsapps.com {
     gzip
 }
 
+analytics.kevinsapps.com {
+    proxy / analytics:8030 {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-Proto {scheme}
+    }
+    log stdout
+    errors stdout
+    gzip
+}
+
+files.kevinsapps.com {
+    proxy / nextcloud:8888 {
+
+    }
+}
+
+blog.kevinsapps.com {
+    proxy / ghost:2368 {
+
+    }
+}
