@@ -1,3 +1,3 @@
-FROM zzrot/alpine-caddy
+FROM abiosoft/caddy:0.10.10
 
-ADD Caddyfile ~/
+COPY ./caddy/Caddyfile /etc/Caddyfile

@@ -76,33 +76,33 @@ services:
     networks:
      - back-tier
 
-  deluge:
-    image: Ufflo:docker-deluge
-    ports:
-      - "8112:8112"
-      - "58846:58846"
-      - "58847:58847"
-      - "58847:58847/udp"
-    volumes:
-      - /docker/deluge/config:/config
-      - /docker/deluge/log:/log
-      - /docker/deluge/data:/data
-    restart: always
+#  deluge:
+#    image: Ufflo:docker-deluge
+#    ports:
+#      - "8112:8112"
+#      - "58846:58846"
+#      - "58847:58847"
+#      - "58847:58847/udp"
+#    volumes:
+#      - /docker/deluge/config:/config
+#      - /docker/deluge/log:/log
+#      - /docker/deluge/data:/data
+#    restart: always
 
   # Services
-  nginx:
-    build:
-      context: ./nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /www/static
-    volumes_from:
-      - music
-      - vochuts
-    networks:
-      - back-tier
+#  nginx:
+#    build:
+#      context: ./nginx
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - /www/static
+#    volumes_from:
+#      - music
+#      - vochuts
+#    networks:
+#      - back-tier
 
   db:
     image: postgres:9.5-alpine
@@ -118,21 +118,27 @@ services:
     networks:
       - back-tier
 
-#  caddy:
-#    image: abiosoft/caddy
-#    depends_on:
-#      - music
-#      - flask
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    networks:
-#      - back-tier
-#    command: -conf=Caddyfile
+  caddy:
+    build:
+      context: .
+      dockerfile: ./caddy/Dockerfile
+    depends_on:
+      - music
+      - flask
+      - vochuts
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy:/root/.caddy
+    networks:
+      - back-tier
+    command: -conf=Caddyfile
 
 volumes:
   pg-data:
     driver: local
+  caddy: {}
 
 networks:
   back-tier:

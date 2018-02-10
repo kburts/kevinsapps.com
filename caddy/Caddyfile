@@ -1,11 +1,22 @@
-0.0.0.0 music.kevinsapps.com {
-    proxy / music:8010 {
-        websocket
-    }
-}
-
-flask.kevinsapps.com {
+0.0.0.0 {
     proxy / flask:5000 {
-
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-Proto {scheme}
     }
+    log stdout
+    errors stdout
+    gzip
 }
+
+kevinsapps.com {
+    proxy / music:8010 {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-Proto {scheme}
+    }
+    log stdout
+    errors stdout
+    gzip
+}
+
