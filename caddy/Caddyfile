@@ -1,5 +1,5 @@
-kevinsapps.com flask.kevinsapps.com {
-    proxy / flask:5000 {}
+kevinsapps.com, www.kevinsapps.com, flask.kevinsapps.com {
+    proxy / flask:5000 { }
 }
 
 music.kevinsapps.com {
@@ -42,8 +42,8 @@ files.kevinsapps.com {
     }
 }
 
-blog.kevinsapps.com {
-    proxy / ghost:2368 {
-
-    }
-}
+#blog.kevinsapps.com {
+#    proxy / ghost:2368 {
+#
+#    }
+#}
