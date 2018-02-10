@@ -76,34 +76,6 @@ services:
     networks:
      - back-tier
 
-#  deluge:
-#    image: Ufflo:docker-deluge
-#    ports:
-#      - "8112:8112"
-#      - "58846:58846"
-#      - "58847:58847"
-#      - "58847:58847/udp"
-#    volumes:
-#      - /docker/deluge/config:/config
-#      - /docker/deluge/log:/log
-#      - /docker/deluge/data:/data
-#    restart: always
-
-  # Services
-#  nginx:
-#    build:
-#      context: ./nginx
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#      - /www/static
-#    volumes_from:
-#      - music
-#      - vochuts
-#    networks:
-#      - back-tier
-
   db:
     image: postgres:9.5-alpine
     networks:
