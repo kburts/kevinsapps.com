@@ -7,7 +7,7 @@ services:
       context: ./music
     volumes:
       - ./music:/code
-      - /public
+      - caddy:/public
     depends_on:
       - redis
       - db
@@ -22,7 +22,7 @@ services:
       context: ./vochuts/vochuts
     volumes:
      - ./vochuts/vochuts:/voccode
-     - /public
+     - caddy:/public
     networks:
      - back-tier
     command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8020"
