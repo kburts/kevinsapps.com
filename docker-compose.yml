@@ -8,6 +8,9 @@ services:
     volumes:
       - ./music:/code
       - /public
+    depends_on:
+      - redis
+      - db
     networks:
       - back-tier
     command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8010"
@@ -99,13 +102,12 @@ services:
       - flask
       - vochuts
     ports:
-      - "80:80"
-      - "443:443"
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
     volumes:
       - caddy:/root/.caddy
     networks:
       - back-tier
-    command: -conf=Caddyfile
 
 volumes:
   pg-data:
